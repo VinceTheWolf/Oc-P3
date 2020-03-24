@@ -1,16 +1,22 @@
 #! /usr/bin/env python3
 # coding: utf-8
 
+"""This script is using classes from other script to generate maze, place characters & items
+and move MacGyver
+"""
+
 import pygame
 from pygame.locals import *
-from items import *
-from maze import *
-from perso import *
+from items import Items
+from maze import Maze
+from perso import Perso
 import variables
 
 pygame.init()
 
 def main():
+    """Main function
+    """
     #Load Window
     fullwindow = pygame.display.set_mode((900, 900))
     fond = pygame.image.load('ressources/fond5.jpg').convert()
@@ -39,8 +45,8 @@ def main():
                 itemsget = str(len(mac.inventory))
                 font = pygame.font.SysFont("comicsansms", 18)
                 text = font.render("Items: " + itemsget, True, (255, 0, 0))
-        
-                fullwindow.blit(fond, (0,0))
+
+                fullwindow.blit(fond, (0, 0))
                 level.map(fullwindow)
                 if 's' not in mac.inventory:
                     fullwindow.blit(itemplaces.setitem1, (itemplaces.item1x, itemplaces.item1y))
@@ -51,7 +57,7 @@ def main():
                 fullwindow.blit(mac.macg, (mac.x, mac.y))
                 fullwindow.blit(text, (0, 0))
                 pygame.display.flip()
-            
+
                 if event.type == KEYDOWN:
                     if event.key == K_RIGHT:
                         mac.deplacer('droite', fullwindow)
@@ -65,6 +71,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-#TODO Pylint
-#TODO PEP 8 & 20

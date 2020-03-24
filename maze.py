@@ -1,20 +1,22 @@
 #! /usr/bin/venv python3
 # coding: utf-8
-
+"""This whole script manages the generation of the labyrinth
+"""
 import pygame
 from pygame.locals import *
 import variables
-from variables import *
-import random
 
 class Maze:
+    """Analyse the model and place walls
+    """
     #On recupere le fichier du labyrinthe
-    def __init__(self, file):
+    def __init__(self):
         self.file = variables.model
         self.structure = 0
 
-    #On parcourt le fichier model en analisant chaque sprite de chaque ligne
     def analyse(self):
+        """This function traverses the model file
+        by analyzing each line and each sprite"""
         with open(self.file, "r") as file:
             structure_level = []
             #Analise des lignes
@@ -27,24 +29,24 @@ class Maze:
                         line_level.append(sprite)
                 structure_level.append(line_level)
             self.structure = structure_level
-        
+
     def map(self, fullwindow):
-        #Chargement des murs
+        """Placing wall
+        """
         wall = pygame.image.load(variables.wall).convert()
         wall = pygame.transform.scale(wall, (60, 60))
         guardian = pygame.image.load(variables.guardian).convert()
         guardian = pygame.transform.scale(guardian, (60, 60))
-        
-        #On parcourt de nouveau le fichier model pour trouver les positions des murs
+
         num_line = 0
         for line in self.structure:
             num_case = 0
             for sprite in line:
-                x = num_case * 60
-                y = num_line * 60
+                posx = num_case * 60
+                posy = num_line * 60
                 if sprite == 'm':
-                    fullwindow.blit(wall, (x,y))
+                    fullwindow.blit(wall, (posx, posy))
                 if sprite == 'a':
-                    fullwindow.blit(guardian, (x,y))
+                    fullwindow.blit(guardian, (posx, posy))
                 num_case += 1
             num_line += 1
