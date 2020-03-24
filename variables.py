@@ -1,14 +1,17 @@
+#! /usr/bin/venv python3
+# coding: utf-8
+"""All the needed variables for other scripts"""
 import pygame
 
-window_length = 900
-window_width = 1200
-sprite_number = 15
-size_sprite = window_length / sprite_number
-model = 'model.txt'
-fenetre = pygame.display.set_mode((900, 900))  # Définition de la fenêtre
-seringue = ('ressources/seringue.png')
-aiguille = ('ressources/aiguille.png')
-ether = ('ressources/ether.png')
-mac = ('ressources/MacGyver.png')
-guardian = ('ressources/Gardien.png')
-wall = ('ressources/mur.jpg')
+WINDOW_LENGTH = 900
+WINDOW_WIDTH = 1200
+SPRITE_NUMBER = 15
+SIZE_SPRITE = WINDOW_LENGTH / SPRITE_NUMBER
+MODEL = 'model.txt'
+FENETRE = pygame.display.set_mode((900, 900))  # Définition de la fenêtre
+SYRINGE = ('ressources/seringue.png')
+NEEDLE = ('ressources/aiguille.png')
+ETHER = ('ressources/ether.png')
+MAC = ('ressources/MacGyver.png')
+GUARDIAN = ('ressources/Gardien.png')
+WALL = ('ressources/mur.jpg')

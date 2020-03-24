@@ -4,7 +4,6 @@
 import pygame
 from pygame.locals import *
 import variables
-from variables import *
 import random
 
 class Items:
@@ -40,7 +39,7 @@ class Items:
         item3case_y = 0
 
 
-        #SERINGUE
+        #SYRINGE
         while self.level.structure[item1case_y][item1case_x] != '0':
             item1case_x = random.randint(0, 14)
             item1case_y = random.randint(0, 14)
@@ -51,7 +50,7 @@ class Items:
         fullwindow.blit(self.setitem1, (self.item1x, self.item1y))
 
 
-        #AIGUILLE
+        #NEEDLE
         while self.level.structure[item2case_y][item2case_x] != '0':
             item2case_x = random.randint(0, 14)
             item2case_y = random.randint(0, 14)

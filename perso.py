@@ -27,28 +27,28 @@ class Perso:
     def deplacer(self, direction, fullwindow):
         """Movement management avoiding walls"""
         if direction == 'droite':
-            if self.case_x < (variables.sprite_number - 1):
+            if self.case_x < (variables.SPRITE_NUMBER - 1):
                 if self.level.structure[self.case_y][self.case_x+1] != 'm':
                     self.case_x += 1
-                    self.pos_x = self.case_x * variables.size_sprite
+                    self.pos_x = self.case_x * variables.SIZE_SPRITE
 
         if direction == 'gauche':
             if self.case_x > 0:
                 if self.level.structure[self.case_y][self.case_x-1] != 'm':
                     self.case_x -= 1
-                    self.pos_x = self.case_x * variables.size_sprite
+                    self.pos_x = self.case_x * variables.SIZE_SPRITE
 
         if direction == 'haut':
             if self.case_y > 0:
                 if self.level.structure[self.case_y-1][self.case_x] != 'm':
                     self.case_y -= 1
-                    self.pos_y = self.case_y * variables.size_sprite
+                    self.pos_y = self.case_y * variables.SIZE_SPRITE
 
         if direction == 'bas':
-            if self.case_y < (variables.sprite_number - 1):
+            if self.case_y < (variables.SPRITE_NUMBER - 1):
                 if self.level.structure[self.case_y+1][self.case_x] != 'm':
                     self.case_y += 1
-                    self.pos_y = self.case_y * variables.size_sprite
+                    self.pos_y = self.case_y * variables.SIZE_SPRITE
 
         if self.level.structure[self.case_y][self.case_x] == 's':
             self.inventory.append('s')

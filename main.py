@@ -23,15 +23,15 @@ def main():
     fond = pygame.transform.scale(fond, (900, 900))
 
     #level structure
-    level = Maze(variables.model)
+    level = Maze()
     level.analyse()
     level.map(fullwindow)
 
     #Items
-    itemplaces = Items(variables.seringue, variables.aiguille, variables.ether, level, fullwindow)
+    itemplaces = Items(variables.SYRINGE, variables.NEEDLE, variables.ETHER, level, fullwindow)
 
     #Character
-    mac = Perso(variables.mac, level, fullwindow)
+    mac = Perso(variables.MAC, level)
     pygame.display.flip()
 
     continuer = 1
@@ -54,7 +54,7 @@ def main():
                     fullwindow.blit(itemplaces.setitem2, (itemplaces.item2x, itemplaces.item2y))
                 if 'e' not in mac.inventory:
                     fullwindow.blit(itemplaces.setitem3, (itemplaces.item3x, itemplaces.item3y))
-                fullwindow.blit(mac.macg, (mac.x, mac.y))
+                fullwindow.blit(mac.macg, (mac.pos_x, mac.pos_y))
                 fullwindow.blit(text, (0, 0))
                 pygame.display.flip()
 

@@ -11,7 +11,7 @@ class Maze:
     """
     #On recupere le fichier du labyrinthe
     def __init__(self):
-        self.file = variables.model
+        self.file = variables.MODEL
         self.structure = 0
 
     def analyse(self):
@@ -33,9 +33,9 @@ class Maze:
     def map(self, fullwindow):
         """Placing wall
         """
-        wall = pygame.image.load(variables.wall).convert()
+        wall = pygame.image.load(variables.WALL).convert()
         wall = pygame.transform.scale(wall, (60, 60))
-        guardian = pygame.image.load(variables.guardian).convert()
+        guardian = pygame.image.load(variables.GUARDIAN).convert()
         guardian = pygame.transform.scale(guardian, (60, 60))
 
         num_line = 0
