@@ -9,7 +9,7 @@ import pygame
 from pygame.locals import *
 from items import Items
 from maze import Maze
-from perso import Perso
+from character import Charac
 import variables
 
 pygame.init()

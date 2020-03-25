@@ -7,7 +7,7 @@ from pygame.locals import *
 import variables
 
 
-class Perso:
+class Charac:
     # pylint: disable=too-many-instance-attributes
     """Positioning and movement of macgyver"""
     def __init__(self, mg, level):
@@ -79,3 +79,5 @@ class Perso:
                 fullwindow.blit(win, (0, 0))
                 pygame.display.flip()
                 self.game = 0
+
+#TODO 
