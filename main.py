@@ -31,7 +31,7 @@ def main():
     itemplaces = Items(variables.SYRINGE, variables.NEEDLE, variables.ETHER, level, fullwindow)
 
     #Character
-    mac = Perso(variables.MAC, level)
+    mac = Charac(variables.MAC, level)
     pygame.display.flip()
 
     continuer = 1

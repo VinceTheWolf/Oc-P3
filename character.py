@@ -79,5 +79,3 @@ class Charac:
                 fullwindow.blit(win, (0, 0))
                 pygame.display.flip()
                 self.game = 0
-
-#TODO 
