@@ -44,6 +44,8 @@ def main():
             if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
                 continuer = 0
             if game != 0:
+
+                #Items Counter
                 itemsget = str(len(mac.inventory))
                 font = pygame.font.SysFont("comicsansms", 18)
                 text = font.render("Items: " + itemsget, True, (255, 0, 0))
@@ -58,8 +60,10 @@ def main():
                     fullwindow.blit(allitems.setitem3, (allitems.item3x, allitems.item3y))
                 fullwindow.blit(mac.macg, (mac.pos_x, mac.pos_y))
                 fullwindow.blit(text, (0, 0))
+
                 pygame.display.flip()
 
+                #Moves of MacGyver
                 if event.type == KEYDOWN:
                     if event.key == K_RIGHT:
                         mac.move('droite')
