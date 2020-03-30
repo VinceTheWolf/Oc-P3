@@ -2,6 +2,9 @@
 # coding: utf-8
 """This whole script manages the generation of the labyrinth
 """
+
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
 import pygame
 from pygame.locals import *
 import variables

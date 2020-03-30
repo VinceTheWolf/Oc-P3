@@ -1,15 +1,19 @@
 #! /usr/bin/env python3
 # coding: utf-8
-
+"""This script will place items in the maze"""
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
+import random
 import pygame
 from pygame.locals import *
-import variables
-import random
+
 
 class Items:
+    """Load and place items"""
     def __init__(self, item1, item2, item3, level, fullwindow):
-        self.case_x = 0
-        self.case_y = 0
+        """Load items image"""
+        self.item_x = ''
+        self.item_y = ''
         self.item1x = ''
         self.item1y = ''
         self.item2x = ''
@@ -18,7 +22,7 @@ class Items:
         self.item3y = ''
 
         self.level = level
-        
+
         self.setitem1 = pygame.image.load(item1).convert()
         self.setitem1 = pygame.transform.scale(self.setitem1, (60, 60))
 
@@ -30,42 +34,32 @@ class Items:
 
         self.itemplace(fullwindow)
 
+
     def itemplace(self, fullwindow):
-        item1case_x = 0
-        item1case_y = 0
-        item2case_x = 0
-        item2case_y = 0
-        item3case_x = 0
-        item3case_y = 0
+        """Place items"""
+        items = 1
+        pos_x = 0
+        pos_y = 0
 
-
-        #SYRINGE
-        while self.level.structure[item1case_y][item1case_x] != '0':
-            item1case_x = random.randint(0, 14)
-            item1case_y = random.randint(0, 14)
-        
-        self.level.structure[item1case_y][item1case_x] = 's'
-        self.item1x = item1case_x * 60
-        self.item1y = item1case_y * 60
-        fullwindow.blit(self.setitem1, (self.item1x, self.item1y))
-
-
-        #NEEDLE
-        while self.level.structure[item2case_y][item2case_x] != '0':
-            item2case_x = random.randint(0, 14)
-            item2case_y = random.randint(0, 14)
-        
-        self.level.structure[item2case_y][item2case_x] = 'n'
-        self.item2x = item2case_x * 60
-        self.item2y = item2case_y * 60
-        fullwindow.blit(self.setitem2, (self.item2x, self.item2y))
-
-        #ETHER
-        while self.level.structure[item3case_y][item3case_x] != '0':
-            item3case_x = random.randint(0, 14)
-            item3case_y = random.randint(0, 14)
-        
-        self.level.structure[item3case_y][item3case_x] = 'e'
-        self.item3x = item3case_x * 60
-        self.item3y = item3case_y * 60
-        fullwindow.blit(self.setitem3, (self.item3x, self.item3y))
+        while items < 4:
+            while self.level.structure[pos_y][pos_x] != '0':
+                pos_x = random.randint(0, 14)
+                pos_y = random.randint(0, 14)
+            self.item_x = pos_x * 60
+            self.item_y = pos_y * 60
+            if items == 1:
+                self.level.structure[pos_y][pos_x] = 's'
+                fullwindow.blit(self.setitem1, (self.item_x, self.item_y))
+                self.item1x = self.item_x
+                self.item1y = self.item_y
+            if items == 2:
+                self.level.structure[pos_y][pos_x] = 'n'
+                fullwindow.blit(self.setitem2, (self.item_x, self.item_y))
+                self.item2x = self.item_x
+                self.item2y = self.item_y
+            if items == 3:
+                self.level.structure[pos_y][pos_x] = 'e'
+                fullwindow.blit(self.setitem3, (self.item_x, self.item_y))
+                self.item3x = self.item_x
+                self.item3y = self.item_y
+            items += 1

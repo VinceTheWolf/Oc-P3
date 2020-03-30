@@ -2,6 +2,8 @@
 # coding: utf-8
 """This script manage the placement and
 movement of macgyver"""
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
 import pygame
 from pygame.locals import *
 import variables
@@ -24,7 +26,7 @@ class Charac:
         self.level = level
         self.game = 1
 
-    def deplacer(self, direction, fullwindow):
+    def move(self, direction):
         """Movement management avoiding walls"""
         if direction == 'droite':
             if self.case_x < (variables.SPRITE_NUMBER - 1):
@@ -50,6 +52,8 @@ class Charac:
                     self.case_y += 1
                     self.pos_y = self.case_y * variables.SIZE_SPRITE
 
+    def getitems(self, fullwindow):
+        """Getting items by passing through"""
         if self.level.structure[self.case_y][self.case_x] == 's':
             self.inventory.append('s')
             self.level.structure[self.case_y][self.case_x] = '0'

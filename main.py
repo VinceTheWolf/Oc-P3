@@ -4,7 +4,9 @@
 """This script is using classes from other script to generate maze, place characters & items
 and move MacGyver
 """
-
+# pylint: disable=no-member
+# pylint: disable=wildcard-import
+# pylint: disable=unused-wildcard-import
 import pygame
 from pygame.locals import *
 from items import Items
@@ -15,6 +17,7 @@ import variables
 pygame.init()
 
 def main():
+    # pylint: disable=undefined-variable
     """Main function
     """
     #Load Window
@@ -28,7 +31,7 @@ def main():
     level.map(fullwindow)
 
     #Items
-    itemplaces = Items(variables.SYRINGE, variables.NEEDLE, variables.ETHER, level, fullwindow)
+    allitems = Items(variables.SYRINGE, variables.NEEDLE, variables.ETHER, level, fullwindow)
 
     #Character
     mac = Charac(variables.MAC, level)
@@ -37,7 +40,6 @@ def main():
     continuer = 1
     game = mac.game
     while continuer:
-        #event pour quitter le jeu
         for event in pygame.event.get():
             if event.type == QUIT or event.type == KEYDOWN and event.key == K_ESCAPE:
                 continuer = 0
@@ -49,24 +51,28 @@ def main():
                 fullwindow.blit(fond, (0, 0))
                 level.map(fullwindow)
                 if 's' not in mac.inventory:
-                    fullwindow.blit(itemplaces.setitem1, (itemplaces.item1x, itemplaces.item1y))
+                    fullwindow.blit(allitems.setitem1, (allitems.item1x, allitems.item1y))
                 if 'n' not in mac.inventory:
-                    fullwindow.blit(itemplaces.setitem2, (itemplaces.item2x, itemplaces.item2y))
+                    fullwindow.blit(allitems.setitem2, (allitems.item2x, allitems.item2y))
                 if 'e' not in mac.inventory:
-                    fullwindow.blit(itemplaces.setitem3, (itemplaces.item3x, itemplaces.item3y))
+                    fullwindow.blit(allitems.setitem3, (allitems.item3x, allitems.item3y))
                 fullwindow.blit(mac.macg, (mac.pos_x, mac.pos_y))
                 fullwindow.blit(text, (0, 0))
                 pygame.display.flip()
 
                 if event.type == KEYDOWN:
                     if event.key == K_RIGHT:
-                        mac.deplacer('droite', fullwindow)
+                        mac.move('droite')
+                        mac.getitems(fullwindow)
                     elif event.key == K_LEFT:
-                        mac.deplacer('gauche', fullwindow)
+                        mac.move('gauche')
+                        mac.getitems(fullwindow)
                     elif event.key == K_UP:
-                        mac.deplacer('haut', fullwindow)
+                        mac.move('haut')
+                        mac.getitems(fullwindow)
                     elif event.key == K_DOWN:
-                        mac.deplacer('bas', fullwindow)
+                        mac.move('bas')
+                        mac.getitems(fullwindow)
                 game = mac.game
 
 if __name__ == "__main__":
